@@ -1,0 +1,20 @@
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0mInitial source changes: [0m
+[0m[[0m[0mdebug[0m] [0m[0m	removed:Set()[0m
+[0m[[0m[0mdebug[0m] [0m[0m	added: Set()[0m
+[0m[[0m[0mdebug[0m] [0m[0m	modified: Set(/Users/anand/IdeaProjects/ScalaAkka/LAJ-P-lightbend-akka-for-java-professional/exercises/exercises/src/test/java/com/lightbend/training/coffeehouse/CoffeeHouseTest.java, /Users/anand/IdeaProjects/ScalaAkka/LAJ-P-lightbend-akka-for-java-professional/exercises/exercises/src/test/java/com/lightbend/training/coffeehouse/CoffeeTest.java, /Users/anand/IdeaProjects/ScalaAkka/LAJ-P-lightbend-akka-for-java-professional/exercises/exercises/src/test/java/com/lightbend/training/coffeehouse/TerminalTest.java, /Users/anand/IdeaProjects/ScalaAkka/LAJ-P-lightbend-akka-for-java-professional/exercises/exercises/src/test/java/com/lightbend/training/coffeehouse/WaiterTest.java)[0m
+[0m[[0m[0mdebug[0m] [0m[0mInvalidated products: Set()[0m
+[0m[[0m[0mdebug[0m] [0m[0mExternal API changes: API Changes: Set()[0m
+[0m[[0m[0mdebug[0m] [0m[0mModified binary dependencies: Set()[0m
+[0m[[0m[0mdebug[0m] [0m[0mInitial directly invalidated classes: Set(com.lightbend.training.coffeehouse.CoffeeHouseTest, com.lightbend.training.coffeehouse.CoffeeTest, com.lightbend.training.coffeehouse.TerminalTest, com.lightbend.training.coffeehouse.WaiterTest)[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0mSources indirectly invalidated by:[0m
+[0m[[0m[0mdebug[0m] [0m[0m	product: Set()[0m
+[0m[[0m[0mdebug[0m] [0m[0m	binary dep: Set()[0m
+[0m[[0m[0mdebug[0m] [0m[0m	external source: Set()[0m
+[0m[[0m[0mdebug[0m] [0m[0mAll initially invalidated classes: Set(com.lightbend.training.coffeehouse.CoffeeHouseTest, com.lightbend.training.coffeehouse.CoffeeTest, com.lightbend.training.coffeehouse.TerminalTest, com.lightbend.training.coffeehouse.WaiterTest)[0m
+[0m[[0m[0mdebug[0m] [0m[0mAll initially invalidated sources:Set(/Users/anand/IdeaProjects/ScalaAkka/LAJ-P-lightbend-akka-for-java-professional/exercises/exercises/src/test/java/com/lightbend/training/coffeehouse/CoffeeHouseTest.java, /Users/anand/IdeaProjects/ScalaAkka/LAJ-P-lightbend-akka-for-java-professional/exercises/exercises/src/test/java/com/lightbend/training/coffeehouse/CoffeeTest.java, /Users/anand/IdeaProjects/ScalaAkka/LAJ-P-lightbend-akka-for-java-professional/exercises/exercises/src/test/java/com/lightbend/training/coffeehouse/TerminalTest.java, /Users/anand/IdeaProjects/ScalaAkka/LAJ-P-lightbend-akka-for-java-professional/exercises/exercises/src/test/java/com/lightbend/training/coffeehouse/WaiterTest.java)[0m
+[0m[[0m[0mdebug[0m] [0m[0mInitial set of included nodes: com.lightbend.training.coffeehouse.CoffeeHouseTest, com.lightbend.training.coffeehouse.CoffeeTest, com.lightbend.training.coffeehouse.TerminalTest, com.lightbend.training.coffeehouse.WaiterTest[0m
+[0m[[0m[0minfo[0m] [0m[0mCompiling 4 Java sources to /Users/anand/IdeaProjects/ScalaAkka/LAJ-P-lightbend-akka-for-java-professional/exercises/exercises/target/scala-2.13/test-classes ...[0m
+[0m[[0m[0mdebug[0m] [0m[0mAttempting to call com.sun.tools.javac.api.JavacTool@300d938d directly...[0m
+[0m[[0m[31merror[0m] [0m[0m(Test / [31mcompileIncremental[0m) javac returned non-zero exit code[0m

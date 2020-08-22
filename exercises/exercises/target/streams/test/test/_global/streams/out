@@ -1,0 +1,73 @@
+[0m[[0m[0mdebug[0m] [0m[0mjavaOptions: Vector()[0m
+[0m[[0m[0mdebug[0m] [0m[0mForking tests - parallelism = false[0m
+[0m[[0m[0mdebug[0m] [0m[0mCreate a single-thread test executor[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunner for com.novocode.junit.JUnitFramework produced 6 initial tasks for 6 tests.[0m
+[0m[[0m[0mdebug[0m] [0m[0m  Running TaskDef(com.lightbend.training.coffeehouse.CoffeeHouseTest, sbt.ForkMain$AnnotatedFingerscan@3932244c, false, [SuiteSelector])[0m
+[0m[[0m[0minfo[0m] [0m[0m[34mTest run started[0m[0m
+[0m[[0m[0minfo[0m] [0m[0mTest com.lightbend.training.coffeehouse.[33mCoffeeHouseTest[0m.[36mshouldLogMessageWhenCreated[0m started[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest com.lightbend.training.coffeehouse.[33mCoffeeHouseTest[0m.[36mshouldLogMessageWhenCreated[0m finished, took 0.396 sec[0m
+[0m[[0m[0minfo[0m] [0m[0mTest com.lightbend.training.coffeehouse.[33mCoffeeHouseTest[0m.[36mshouldCreateChildActorCalledBaristaWhenCreated[0m started[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest com.lightbend.training.coffeehouse.[33mCoffeeHouseTest[0m.[36mshouldCreateChildActorCalledBaristaWhenCreated[0m finished, took 0.144 sec[0m
+[0m[[0m[0minfo[0m] [0m[0mTest com.lightbend.training.coffeehouse.[33mCoffeeHouseTest[0m.[36mshouldCreateChildActorCalledWaiterWhenCreated[0m started[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest com.lightbend.training.coffeehouse.[33mCoffeeHouseTest[0m.[36mshouldCreateChildActorCalledWaiterWhenCreated[0m finished, took 0.063 sec[0m
+[0m[[0m[0minfo[0m] [0m[0mTest com.lightbend.training.coffeehouse.[33mCoffeeHouseTest[0m.[36mshouldCreateGuestActorsWhenCreateGuestMessageSent[0m started[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest com.lightbend.training.coffeehouse.[33mCoffeeHouseTest[0m.[36mshouldCreateGuestActorsWhenCreateGuestMessageSent[0m finished, took 0.248 sec[0m
+[0m[[0m[0minfo[0m] [0m[0m[34mTest run finished: [0m[34m0 failed[0m[34m, [0m[34m0 ignored[0m[34m, 4 total, 5.208s[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m    Produced 0 nested tasks and 4 events.[0m
+[0m[[0m[0mdebug[0m] [0m[0m  Running TaskDef(com.lightbend.training.coffeehouse.BaristaTest, sbt.ForkMain$AnnotatedFingerscan@1d971c5c, false, [SuiteSelector])[0m
+[0m[[0m[0minfo[0m] [0m[0m[34mTest run started[0m[0m
+[0m[[0m[0minfo[0m] [0m[0mTest com.lightbend.training.coffeehouse.[33mBaristaTest[0m.[36msendingPrepareCoffeeShouldResultInCoffeePreparedResponse[0m started[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest com.lightbend.training.coffeehouse.[33mBaristaTest[0m.[36msendingPrepareCoffeeShouldResultInCoffeePreparedResponse[0m finished, took 0.187 sec[0m
+[0m[[0m[0minfo[0m] [0m[0m[34mTest run finished: [0m[34m0 failed[0m[34m, [0m[34m0 ignored[0m[34m, 1 total, 0.241s[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m    Produced 0 nested tasks and 1 events.[0m
+[0m[[0m[0mdebug[0m] [0m[0m  Running TaskDef(com.lightbend.training.coffeehouse.TerminalTest, sbt.ForkMain$AnnotatedFingerscan@19b53c34, false, [SuiteSelector])[0m
+[0m[[0m[0minfo[0m] [0m[0m[34mTest run started[0m[0m
+[0m[[0m[0minfo[0m] [0m[0mTest com.lightbend.training.coffeehouse.[33mTerminalTest[0m.[36mshouldCreateUnknownFromCommand[0m started[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest com.lightbend.training.coffeehouse.[33mTerminalTest[0m.[36mshouldCreateUnknownFromCommand[0m finished, took 0.175 sec[0m
+[0m[[0m[0minfo[0m] [0m[0mTest com.lightbend.training.coffeehouse.[33mTerminalTest[0m.[36mshouldCreateCorrectGuestFromCommand[0m started[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest com.lightbend.training.coffeehouse.[33mTerminalTest[0m.[36mshouldCreateCorrectGuestFromCommand[0m finished, took 0.021 sec[0m
+[0m[[0m[0minfo[0m] [0m[0mTest com.lightbend.training.coffeehouse.[33mTerminalTest[0m.[36mshouldCreateGetStatusFromCommand[0m started[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest com.lightbend.training.coffeehouse.[33mTerminalTest[0m.[36mshouldCreateGetStatusFromCommand[0m finished, took 0.025 sec[0m
+[0m[[0m[0minfo[0m] [0m[0mTest com.lightbend.training.coffeehouse.[33mTerminalTest[0m.[36mshouldCreateQuitFromCommand[0m started[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest com.lightbend.training.coffeehouse.[33mTerminalTest[0m.[36mshouldCreateQuitFromCommand[0m finished, took 0.009 sec[0m
+[0m[[0m[0minfo[0m] [0m[0m[34mTest run finished: [0m[34m0 failed[0m[34m, [0m[34m0 ignored[0m[34m, 4 total, 0.234s[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m    Produced 0 nested tasks and 4 events.[0m
+[0m[[0m[0mdebug[0m] [0m[0m  Running TaskDef(com.lightbend.training.coffeehouse.CoffeeTest, sbt.ForkMain$AnnotatedFingerscan@4eb6aa66, false, [SuiteSelector])[0m
+[0m[[0m[0minfo[0m] [0m[0m[34mTest run started[0m[0m
+[0m[[0m[0minfo[0m] [0m[0mTest com.lightbend.training.coffeehouse.[33mCoffeeTest[0m.[36motherDrinkShouldReturnDrinkDifferentFromGivenCode[0m started[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest com.lightbend.training.coffeehouse.[33mCoffeeTest[0m.[36motherDrinkShouldReturnDrinkDifferentFromGivenCode[0m finished, took 0.093 sec[0m
+[0m[[0m[0minfo[0m] [0m[0mTest com.lightbend.training.coffeehouse.[33mCoffeeTest[0m.[36morderShouldCreateCorrectBeverageForGivenCode[0m started[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest com.lightbend.training.coffeehouse.[33mCoffeeTest[0m.[36morderShouldCreateCorrectBeverageForGivenCode[0m finished, took 0.006 sec[0m
+[0m[[0m[0minfo[0m] [0m[0mTest com.lightbend.training.coffeehouse.[33mCoffeeTest[0m.[36morderShouldThrowExceptionForWrongBeverageCode[0m started[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest com.lightbend.training.coffeehouse.[33mCoffeeTest[0m.[36morderShouldThrowExceptionForWrongBeverageCode[0m finished, took 0.004 sec[0m
+[0m[[0m[0minfo[0m] [0m[0mTest com.lightbend.training.coffeehouse.[33mCoffeeTest[0m.[36mcoffeesShouldContains_AkkaccinoCaffeJavaAndMochaPlay[0m started[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest com.lightbend.training.coffeehouse.[33mCoffeeTest[0m.[36mcoffeesShouldContains_AkkaccinoCaffeJavaAndMochaPlay[0m finished, took 0.037 sec[0m
+[0m[[0m[0minfo[0m] [0m[0m[34mTest run finished: [0m[34m0 failed[0m[34m, [0m[34m0 ignored[0m[34m, 4 total, 0.153s[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m    Produced 0 nested tasks and 4 events.[0m
+[0m[[0m[0mdebug[0m] [0m[0m  Running TaskDef(com.lightbend.training.coffeehouse.WaiterTest, sbt.ForkMain$AnnotatedFingerscan@35d4bfd0, false, [SuiteSelector])[0m
+[0m[[0m[0minfo[0m] [0m[0m[34mTest run started[0m[0m
+[0m[[0m[0minfo[0m] [0m[0mTest com.lightbend.training.coffeehouse.[33mWaiterTest[0m.[36msendingCoffeePreparedShouldResultInCoffeeServedToGuest[0m started[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest com.lightbend.training.coffeehouse.[33mWaiterTest[0m.[36msendingCoffeePreparedShouldResultInCoffeeServedToGuest[0m finished, took 0.057 sec[0m
+[0m[[0m[0minfo[0m] [0m[0mTest com.lightbend.training.coffeehouse.[33mWaiterTest[0m.[36msendingServeCoffeeShouldResultInPrepareCoffeeToBarista[0m started[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest com.lightbend.training.coffeehouse.[33mWaiterTest[0m.[36msendingServeCoffeeShouldResultInPrepareCoffeeToBarista[0m finished, took 0.09 sec[0m
+[0m[[0m[0minfo[0m] [0m[0m[34mTest run finished: [0m[34m0 failed[0m[34m, [0m[34m0 ignored[0m[34m, 2 total, 0.331s[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m    Produced 0 nested tasks and 2 events.[0m
+[0m[[0m[0mdebug[0m] [0m[0m  Running TaskDef(com.lightbend.training.coffeehouse.GuestTest, sbt.ForkMain$AnnotatedFingerscan@26135a2e, false, [SuiteSelector])[0m
+[0m[[0m[0minfo[0m] [0m[0m[34mTest run started[0m[0m
+[0m[[0m[0minfo[0m] [0m[0mTest com.lightbend.training.coffeehouse.[33mGuestTest[0m.[36msendingCoffeeServedShouldIncreaseCoffeeCount[0m started[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest com.lightbend.training.coffeehouse.[33mGuestTest[0m.[36msendingCoffeeServedShouldIncreaseCoffeeCount[0m finished, took 0.146 sec[0m
+[0m[[0m[0minfo[0m] [0m[0mTest com.lightbend.training.coffeehouse.[33mGuestTest[0m.[36msendingCoffeeFinishedShouldResultInServeCoffeeMessageToWaiter[0m started[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest com.lightbend.training.coffeehouse.[33mGuestTest[0m.[36msendingCoffeeFinishedShouldResultInServeCoffeeMessageToWaiter[0m finished, took 0.037 sec[0m
+[0m[[0m[0minfo[0m] [0m[0mTest com.lightbend.training.coffeehouse.[33mGuestTest[0m.[36mserveCoffeeShouldBeSentAfterFinishCoffeeDuration[0m started[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest com.lightbend.training.coffeehouse.[33mGuestTest[0m.[36mserveCoffeeShouldBeSentAfterFinishCoffeeDuration[0m finished, took 0.211 sec[0m
+[0m[[0m[0minfo[0m] [0m[0m[34mTest run finished: [0m[34m0 failed[0m[34m, [0m[34m0 ignored[0m[34m, 3 total, 0.527s[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m    Produced 0 nested tasks and 3 events.[0m
+[0m[[0m[0mdebug[0m] [0m[0mSummary for JUnit not available.[0m
+[0m[[0m[0minfo[0m] [0m[0mPassed: Total 18, Failed 0, Errors 0, Passed 18[0m
+[0m[[0m[0mdebug[0m] [0m[0mPassed tests:[0m
+[0m[[0m[0mdebug[0m] [0m[0m	com.lightbend.training.coffeehouse.CoffeeHouseTest[0m
+[0m[[0m[0mdebug[0m] [0m[0m	com.lightbend.training.coffeehouse.BaristaTest[0m
+[0m[[0m[0mdebug[0m] [0m[0m	com.lightbend.training.coffeehouse.TerminalTest[0m
+[0m[[0m[0mdebug[0m] [0m[0m	com.lightbend.training.coffeehouse.CoffeeTest[0m
+[0m[[0m[0mdebug[0m] [0m[0m	com.lightbend.training.coffeehouse.WaiterTest[0m
+[0m[[0m[0mdebug[0m] [0m[0m	com.lightbend.training.coffeehouse.GuestTest[0m
