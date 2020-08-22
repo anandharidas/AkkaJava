@@ -96,7 +96,9 @@ public class CoffeeHouseApp implements Terminal{
     }
 
     protected ActorRef createCoffeeHouse(){
-        return system.actorOf(CoffeeHouse.props(),"coffee-house");
+        final int caffeineLimit =
+                system.settings().config().getInt("coffee-house.caffeine-limit");
+        return system.actorOf(CoffeeHouse.props(caffeineLimit),"coffee-house");
     }
 
     private void commandLoop() throws IOException{

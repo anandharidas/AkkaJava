@@ -27,6 +27,11 @@ public class Guest extends AbstractLoggingActorWithTimers {
         }).match(CoffeeFinished.class, coffeeFinished ->orderFavoriteCoffee()).build();
     }
 
+    @Override
+    public void postStop(){
+        log().info("Goodbye!");
+    }
+
     private void orderFavoriteCoffee() {
         this.waiter.tell(new Waiter.ServeCoffee(this.favoriteCoffee),self());
     }
