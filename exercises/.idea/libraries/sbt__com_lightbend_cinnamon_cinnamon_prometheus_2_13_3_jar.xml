@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="sbt: com.lightbend.cinnamon:cinnamon-prometheus:2.13.3:jar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.ivy2/cache/com.lightbend.cinnamon/cinnamon-prometheus/jars/cinnamon-prometheus-2.13.3.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
