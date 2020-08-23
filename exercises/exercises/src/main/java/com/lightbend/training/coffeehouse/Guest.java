@@ -24,10 +24,16 @@ public class Guest extends AbstractLoggingActorWithTimers {
     @Override
     public Receive createReceive() {
         return receiveBuilder()
-                .match(Waiter.CoffeeServed.class, coffeeServed -> {
+                .match(Waiter.CoffeeServed.class,
+                    coffeeServed -> coffeeServed.coffee.equals(favoriteCoffee),
+                        coffeeServed -> {
                     coffeeCount++;
                     log().info("Enjoying my {} yummy {} ",coffeeCount,coffeeServed.coffee);
                     scheduleCoffeeFinished();
+                })
+                .match(Waiter.CoffeeServed.class,coffeeServed -> {
+                    log().info("Expected a {} but got served a {}",favoriteCoffee,coffeeServed.coffee);
+                    waiter.tell(new Waiter.Complaint(favoriteCoffee),self());
                 })
                 .match(CoffeeFinished.class, this::CaffeineLimitCheck,
                         coffeeFinished -> { throw new CaffeineException();} )

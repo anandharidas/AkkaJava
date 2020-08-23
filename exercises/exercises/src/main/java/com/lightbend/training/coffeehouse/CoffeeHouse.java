@@ -23,6 +23,13 @@ public class CoffeeHouse extends AbstractLoggingActor {
             FiniteDuration.create(context().system().settings().config().
                             getDuration("coffee-house.barista.prepare-coffee-duration",MILLISECONDS),
                     MILLISECONDS);
+    private final int baristaAccuracy =
+            context().system().settings().config().getInt("coffee-house.barista.accuracy");
+
+
+    private final int waiterMaxComplaintCount =
+            context().system().settings().config().getInt("coffee-house.waiter.max-complaint-count");
+
 
     private final ActorRef barista = createBarista();
     private final ActorRef waiter = createWaiter();
@@ -30,12 +37,15 @@ public class CoffeeHouse extends AbstractLoggingActor {
     private final int caffeineLimit;
 
     protected ActorRef createWaiter() {
-        return getContext().actorOf(Waiter.props(self()),"waiter");
+        log().warning("WARNING waiterMaxComplaintCount {}",waiterMaxComplaintCount);
+        return getContext().actorOf(Waiter.props(self(),barista,waiterMaxComplaintCount),"waiter");
     }
 
-
     protected ActorRef createBarista() {
-        return getContext().actorOf(Barista.props(prepareCoffeeDuration),"barista");
+        log().warning("WARNING prepareCoffeeDuration {} and baristaAccuracy {}",
+                prepareCoffeeDuration,baristaAccuracy);
+        return getContext().actorOf(Barista.props(prepareCoffeeDuration,baristaAccuracy),
+                "barista");
     }
 
     public CoffeeHouse(int caffeineLimit) {
@@ -74,7 +84,7 @@ public class CoffeeHouse extends AbstractLoggingActor {
 
     @Override
     public SupervisorStrategy supervisorStrategy() {
-        return new OneForOneStrategy(false,
+        return new OneForOneStrategy(true,
                 DeciderBuilder
                         .match(Guest.CaffeineException.class ,
                                 e -> (SupervisorStrategy.Directive) SupervisorStrategy.stop()).build().
