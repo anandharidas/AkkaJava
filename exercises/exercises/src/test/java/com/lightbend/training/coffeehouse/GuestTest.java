@@ -34,6 +34,15 @@ public class GuestTest extends BaseAkkaTestCase {
   }
 
   @Test
+  public void shouldSendComplaintWhenWrongDrinkIsSent() {
+    new TestKit(system) {{
+      ActorRef guest = createGuest(this, getRef());
+      guest.tell(new Waiter.CoffeeServed(new Coffee.MochaPlay()), ActorRef.noSender());
+      expectMsgEquals(new Waiter.Complaint((new Coffee.Akkaccino())));
+    }};
+  }
+
+  @Test
   public void sendingCoffeeFinishedShouldResultInServeCoffeeMessageToWaiter() {
     new TestKit(system) {{
       ActorRef guest = createGuest(this, getRef());

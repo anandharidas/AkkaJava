@@ -175,3 +175,86 @@ Enter commands into the terminal, e.g. 'q' or 'quit'
 02:09:19 DEBUG [akka://coffee-house-system/user/coffee-house/barista] - stopped
 02:09:19 DEBUG [akka://coffee-house-system/user/coffee-house] - stopped
 02:09:19 DEBUG [akka://coffee-house-system/user/coffee-house/waiter] - stopped
+13:19:58 WARN  [com.lightbend.training.coffeehouse.CoffeeHouseApp] - CoffeeHouseApp running
+Enter commands into the terminal, e.g. 'q' or 'quit'
+13:19:58 DEBUG [akka://coffee-house-system/user/coffee-house] - CoffeeHouse Open
+13:19:58 DEBUG [akka://coffee-house-system/user/coffee-house/waiter] - started (com.lightbend.training.coffeehouse.Waiter@5cd2049e)
+13:19:58 DEBUG [akka://coffee-house-system/user/coffee-house/barista] - started (com.lightbend.training.coffeehouse.Barista@644223f9)
+13:19:58 DEBUG [akka://coffee-house-system/user/coffee-house] - started (com.lightbend.training.coffeehouse.CoffeeHouse@420fd85f)
+13:19:58 DEBUG [akka://coffee-house-system/user/coffee-house] - now supervising Actor[akka://coffee-house-system/user/coffee-house/barista#-1954882948]
+13:19:58 DEBUG [akka://coffee-house-system/user/coffee-house] - now supervising Actor[akka://coffee-house-system/user/coffee-house/waiter#1025986901]
+13:20:43 DEBUG [akka://coffee-house-system/user/coffee-house] - Guest Actor[akka://coffee-house-system/user/coffee-house/$a#519333901] add to book
+13:20:43 DEBUG [akka://coffee-house-system/user/coffee-house] - now supervising Actor[akka://coffee-house-system/user/coffee-house/$a#519333901]
+13:20:43 DEBUG [akka://coffee-house-system/user/coffee-house/$a] - started (com.lightbend.training.coffeehouse.Guest@160ec5c)
+13:20:43 DEBUG [akka://coffee-house-system/user/coffee-house/$a] - now watched by Actor[akka://coffee-house-system/user/coffee-house#1200557093]
+13:20:43 INFO  [akka://coffee-house-system/user/coffee-house] - Guest caffeine count incremented. WARNING arguments left: 1
+13:20:48 INFO  [akka://coffee-house-system/user/coffee-house/$a] - Enjoying my 1 yummy Akkaccino 
+13:20:54 INFO  [akka://coffee-house-system/user/coffee-house] - Guest caffeine count incremented. WARNING arguments left: 1
+13:20:59 INFO  [akka://coffee-house-system/user/coffee-house/$a] - Enjoying my 2 yummy Akkaccino 
+13:21:04 INFO  [akka://coffee-house-system/user/coffee-house] - Guest caffeine count incremented. WARNING arguments left: 1
+13:21:09 INFO  [akka://coffee-house-system/user/coffee-house/$a] - Enjoying my 3 yummy Akkaccino 
+13:21:14 ERROR [akka://coffee-house-system/user/coffee-house/$a] - Too much caffeine!
+com.lightbend.training.coffeehouse.Guest$CaffeineException: Too much caffeine!
+	at com.lightbend.training.coffeehouse.Guest.lambda$createReceive$1(Guest.java:33)
+	at akka.japi.pf.UnitCaseStatement.apply(CaseStatements.scala:24)
+	at akka.japi.pf.UnitCaseStatement.apply(CaseStatements.scala:20)
+	at scala.PartialFunction.applyOrElse(PartialFunction.scala:187)
+	at scala.PartialFunction.applyOrElse$(PartialFunction.scala:186)
+	at akka.japi.pf.UnitCaseStatement.applyOrElse(CaseStatements.scala:20)
+	at scala.PartialFunction$OrElse.applyOrElse(PartialFunction.scala:241)
+	at scala.PartialFunction$OrElse.applyOrElse(PartialFunction.scala:242)
+	at akka.actor.Actor.aroundReceive(Actor.scala:534)
+	at akka.actor.Actor.aroundReceive$(Actor.scala:532)
+	at akka.actor.AbstractActorWithTimers.akka$actor$Timers$$super$aroundReceive(Timers.scala:67)
+	at akka.actor.Timers.aroundReceive(Timers.scala:51)
+	at akka.actor.Timers.aroundReceive$(Timers.scala:40)
+	at akka.actor.AbstractActorWithTimers.aroundReceive(Timers.scala:67)
+	at akka.actor.ActorCell.receiveMessage(ActorCell.scala:573)
+	at akka.actor.ActorCell.invoke$$original(ActorCell.scala:543)
+	at akka.actor.ActorCell.invoke(ActorCell.scala:61)
+	at akka.dispatch.Mailbox.processMailbox(Mailbox.scala:269)
+	at akka.dispatch.Mailbox.run$$original(Mailbox.scala:230)
+	at akka.dispatch.Mailbox.run(Mailbox.scala:32)
+	at cinnamon.akka.DispatcherInstruments$RecordingRunnable.run(DispatcherInstruments.scala:143)
+	at akka.dispatch.ForkJoinExecutorConfigurator$AkkaForkJoinTask.exec(ForkJoinExecutorConfigurator.scala:47)
+	at java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:289)
+	at java.util.concurrent.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:1056)
+	at java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1692)
+	at java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:157)
+13:21:14 DEBUG [akka://coffee-house-system/user/coffee-house/$a] - restarting
+13:21:14 INFO  [akka://coffee-house-system/user/coffee-house/$a] - Goodbye!
+13:21:14 DEBUG [akka://coffee-house-system/user/coffee-house/$a] - restarted
+13:21:14 INFO  [akka://coffee-house-system/user/coffee-house] - Guest caffeine count incremented. WARNING arguments left: 1
+13:21:19 INFO  [akka://coffee-house-system/user/coffee-house/$a] - Enjoying my 1 yummy Akkaccino 
+13:21:24 INFO  [akka://coffee-house-system/user/coffee-house] - Guest caffeine count incremented. WARNING arguments left: 1
+13:21:29 INFO  [akka://coffee-house-system/user/coffee-house/$a] - Enjoying my 2 yummy Akkaccino 
+13:21:34 INFO  [akka://coffee-house-system/user/coffee-house] - Sorry Actor[akka://coffee-house-system/user/coffee-house/$a#519333901], but you have reached your limit.
+13:21:34 INFO  [akka://coffee-house-system/user/coffee-house/$a] - Goodbye!
+13:21:34 DEBUG [akka://coffee-house-system/user/coffee-house/$a] - stopped
+13:21:34 INFO  [akka://coffee-house-system/user/coffee-house] - Thanks Actor[akka://coffee-house-system/user/coffee-house/$a#519333901], for being our guest!
+13:21:34 DEBUG [akka://coffee-house-system/user/coffee-house] - Removed guest Actor[akka://coffee-house-system/user/coffee-house/$a#519333901] from bookkeeper
+13:25:20 DEBUG [akka://coffee-house-system/user/coffee-house] - stopping
+13:25:20 DEBUG [akka://coffee-house-system/user/coffee-house/waiter] - stopped
+13:25:20 DEBUG [akka://coffee-house-system/user/coffee-house/barista] - stopped
+13:25:20 DEBUG [akka://coffee-house-system/user/coffee-house] - stopped
+15:55:04 WARN  [com.lightbend.training.coffeehouse.CoffeeHouseApp] - CoffeeHouseApp running
+Enter commands into the terminal, e.g. 'q' or 'quit'
+15:55:04 DEBUG [akka://coffee-house-system/user/coffee-house] - CoffeeHouse Open
+15:55:04 DEBUG [akka://coffee-house-system/user/coffee-house/barista] - started (com.lightbend.training.coffeehouse.Barista@7b468957)
+15:55:04 DEBUG [akka://coffee-house-system/user/coffee-house/waiter] - started (com.lightbend.training.coffeehouse.Waiter@1732ebd2)
+15:55:04 DEBUG [akka://coffee-house-system/user/coffee-house] - started (com.lightbend.training.coffeehouse.CoffeeHouse@3bc0bfe9)
+15:55:04 DEBUG [akka://coffee-house-system/user/coffee-house] - now supervising Actor[akka://coffee-house-system/user/coffee-house/barista#-964421168]
+15:55:04 DEBUG [akka://coffee-house-system/user/coffee-house] - now supervising Actor[akka://coffee-house-system/user/coffee-house/waiter#-622401458]
+15:55:20 WARN  [com.lightbend.training.coffeehouse.CoffeeHouseApp] - Unknown terminal command g 2 !
+15:55:23 DEBUG [akka://coffee-house-system/user/coffee-house] - Guest Actor[akka://coffee-house-system/user/coffee-house/$a#-1944911170] add to book
+15:55:23 DEBUG [akka://coffee-house-system/user/coffee-house] - now supervising Actor[akka://coffee-house-system/user/coffee-house/$a#-1944911170]
+15:55:23 DEBUG [akka://coffee-house-system/user/coffee-house/$a] - started (com.lightbend.training.coffeehouse.Guest@906344a)
+15:55:23 DEBUG [akka://coffee-house-system/user/coffee-house/$a] - now watched by Actor[akka://coffee-house-system/user/coffee-house#-1262084929]
+15:55:23 INFO  [akka://coffee-house-system/user/coffee-house] - Guest caffeine count incremented. WARNING arguments left: 1
+15:55:28 INFO  [akka://coffee-house-system/user/coffee-house/$a] - Enjoying my 1 yummy Akkaccino 
+15:55:33 INFO  [akka://coffee-house-system/user/coffee-house] - Guest caffeine count incremented. WARNING arguments left: 1
+15:55:38 INFO  [akka://coffee-house-system/user/coffee-house/$a] - Enjoying my 2 yummy Akkaccino 
+15:55:43 INFO  [akka://coffee-house-system/user/coffee-house/$a] - Goodbye!
+15:55:43 DEBUG [akka://coffee-house-system/user/coffee-house/$a] - stopped
+15:55:43 INFO  [akka://coffee-house-system/user/coffee-house] - Thanks Actor[akka://coffee-house-system/user/coffee-house/$a#-1944911170], for being our guest!
+15:55:43 DEBUG [akka://coffee-house-system/user/coffee-house] - Removed guest Actor[akka://coffee-house-system/user/coffee-house/$a#-1944911170] from bookkeeper

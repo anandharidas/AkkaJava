@@ -1,9 +1,7 @@
 package com.lightbend.training.coffeehouse;
 
-import akka.actor.AbstractLoggingActor;
-import akka.actor.ActorRef;
-import akka.actor.Props;
-import akka.actor.Terminated;
+import akka.actor.*;
+import akka.japi.pf.DeciderBuilder;
 import akka.japi.pf.ReceiveBuilder;
 import scala.concurrent.duration.FiniteDuration;
 
@@ -71,6 +69,16 @@ public class CoffeeHouse extends AbstractLoggingActor {
                     removeGuestFromGuestBook(terminated.actor());
                 }).
                 build();
+    }
+
+
+    @Override
+    public SupervisorStrategy supervisorStrategy() {
+        return new OneForOneStrategy(false,
+                DeciderBuilder
+                        .match(Guest.CaffeineException.class ,
+                                e -> (SupervisorStrategy.Directive) SupervisorStrategy.stop()).build().
+                                            orElse(super.supervisorStrategy().decider()));
     }
 
     private boolean cofeeApproval(ApproveCoffee approveCoffee) {

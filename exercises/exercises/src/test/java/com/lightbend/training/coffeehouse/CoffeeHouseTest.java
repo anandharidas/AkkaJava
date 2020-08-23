@@ -92,6 +92,18 @@ public class CoffeeHouseTest extends BaseAkkaTestCase {
       });
     }};
   }
+
+  @Test
+  public void shouldStopGuestOnFailure() {
+    new TestKit(system) {{
+      ActorRef coffeeHouse = system.actorOf(CoffeeHouse.props(1), "guest-stopped");
+      coffeeHouse.tell(new CoffeeHouse.CreateGuest(new Coffee.Akkaccino(), 0), ActorRef.noSender());
+      ActorRef guest = expectActor(this, "/user/guest-stopped/$*");
+      watch(guest);
+      coffeeHouse.tell(new CoffeeHouse.ApproveCoffee(new Coffee.Akkaccino(), guest), ActorRef.noSender());
+      expectTerminated(guest);
+    }};
+  }
 }
 
 

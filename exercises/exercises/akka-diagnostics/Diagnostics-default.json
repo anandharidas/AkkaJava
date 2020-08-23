@@ -1,5 +1,5 @@
 {
-  "start-time" : "2020-08-22T13:15:57.739",
+  "start-time" : "2020-08-23T10:23:25.031",
   "akka-version" : "2.6.4",
   "akka-diagnostics-version" : "1.1.12",
   "classpath" : "/Users/anand/IdeaProjects/ScalaAkka/LAJ-P-lightbend-akka-for-java-professional/exercises/exercises/target/scala-2.13/test-classes/:/Users/anand/IdeaProjects/ScalaAkka/LAJ-P-lightbend-akka-for-java-professional/exercises/exercises/target/scala-2.13/classes/:/Users/anand/IdeaProjects/ScalaAkka/LAJ-P-lightbend-akka-for-java-professional/exercises/common/target/scala-2.13/classes/:/Users/anand/IdeaProjects/ScalaAkka/LAJ-P-lightbend-akka-for-java-professional/exercises/common/target/scala-2.13/test-classes/:/Users/anand/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/scala-sbt/test-interface/1.0/test-interface-1.0.jar:/Users/anand/Library/Caches/Coursier/v1/https/repo.lightbend.com/pass/vlG2VqY2fQeEZdpJcOrF28W4Si74DSgA59ZwLrMdiH6H2u13/commercial-releases/com/lightbend/cinnamon/cinnamon-scala_2.13/2.13.3/cinnamon-scala_2.13-2.13.3.jar:/Users/anand/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/com/typesafe/config/1.4.0/config-1.4.0.jar:/Users/anand/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/com/google/guava/guava/23.0/guava-23.0.jar:/Users/anand/Library/Caches/Coursier/v1/https/repo.lightbend.com/pass/vlG2VqY2fQeEZdpJcOrF28W4Si74DSgA59ZwLrMdiH6H2u13/commercial-releases/com/lightbend/cinnamon/cinnamon-jvm-metrics-producer/2.13.3/cinnamon-jvm-metrics-producer-2.13.3.jar:/Users/anand/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/modules/scala-java8-compat_2.13/0.9.0/scala-java8-compat_2.13-0.9.0.jar:/Users/anand/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/apache/commons/commons-lang3/3.5/commons-lang3-3.5.jar:/Users/anand/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-library/2.13.1/scala-library-2.13.1.jar:/Users/anand/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/modules/scala-parser-combinators_2.13/1.1.2/scala-parser-combinators_2.13-1.1.2.jar:/Users/anand/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/com/google/errorprone/error_prone_annotations/2.0.18/error_prone_annotations-2.0.18.jar:/Users/anand/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/com/typesafe/akka/akka-actor_2.13/2.6.4/akka-actor_2.13-2.6.4.jar:/Users/anand/Library/Caches/Coursier/v1/https/repo.lightbend.com/pass/vlG2VqY2fQeEZdpJcOrF28W4Si74DSgA59ZwLrMdiH6H2u13/commercial-releases/com/lightbend/cinnamon/cinnamon-core_2.13/2.13.3/cinnamon-core_2.13-2.13.3.jar:/Users/anand/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/io/prometheus/simpleclient/0.8.0/simpleclient-0.8.0.jar:/Users/anand/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/ch/qos/logback/logback-classic/1.2.3/logback-classic-1.2.3.jar:/Users/anand/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/com/google/code/findbugs/jsr305/1.3.9/jsr305-1.3.9.jar:/Users/anand/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/slf4j/slf4j-api/1.7.30/slf4j-api-1.7.30.jar:/Users/anand/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/io/prometheus/simpleclient_httpserver/0.8.0/simpleclient_httpserver-0.8.0.jar:/Users/anand/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/com/google/j2objc/j2objc-annotations/1.1/j2objc-annotations-1.1.jar:/Users/anand/Library/Caches/Coursier/v1/https/repo.lightbend.com/pass/vlG2VqY2fQeEZdpJcOrF28W4Si74DSgA59ZwLrMdiH6H2u13/commercial-releases/com/lightbend/cinnamon/cinnamon-java/2.13.3/cinnamon-java-2.13.3.jar:/Users/anand/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/hdrhistogram/HdrHistogram/2.1.12/HdrHistogram-2.1.12.jar:/Users/anand/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/io/prometheus/simpleclient_common/0.8.0/simpleclient_common-0.8.0.jar:/Users/anand/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/com/typesafe/akka/akka-slf4j_2.13/2.6.4/akka-slf4j_2.13-2.6.4.jar:/Users/anand/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/com/typesafe/akka/akka-testkit_2.13/2.6.4/akka-testkit_2.13-2.6.4.jar:/Users/anand/Library/Caches/Coursier/v1/https/repo.lightbend.com/pass/vlG2VqY2fQeEZdpJcOrF28W4Si74DSgA59ZwLrMdiH6H2u13/commercial-releases/com/lightbend/cinnamon/cinnamon-akka_2.13/2.13.3/cinnamon-akka_2.13-2.13.3.jar:/Users/anand/Library/Caches/Coursier/v1/https/repo.lightbend.com/pass/vlG2VqY2fQeEZdpJcOrF28W4Si74DSgA59ZwLrMdiH6H2u13/commercial-releases/com/lightbend/akka/akka-diagnostics_2.13/1.1.12/akka-diagnostics_2.13-1.1.12.jar:/Users/anand/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/com/novocode/junit-interface/0.11/junit-interface-0.11.jar:/Users/anand/Library/Caches/Coursier/v1/https/repo.lightbend.com/pass/vlG2VqY2fQeEZdpJcOrF28W4Si74DSgA59ZwLrMdiH6H2u13/commercial-releases/com/lightbend/cinnamon/cinnamon-common/2.13.3/cinnamon-common-2.13.3.jar:/Users/anand/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/codehaus/mojo/animal-sniffer-annotations/1.14/animal-sniffer-annotations-1.14.jar:/Users/anand/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/assertj/assertj-core/3.15.0/assertj-core-3.15.0.jar:/Users/anand/Library/Caches/Coursier/v1/https/repo.lightbend.com/pass/vlG2VqY2fQeEZdpJcOrF28W4Si74DSgA59ZwLrMdiH6H2u13/commercial-releases/com/lightbend/cinnamon/cinnamon-prometheus/2.13.3/cinnamon-prometheus-2.13.3.jar:/Users/anand/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/junit/junit/4.11/junit-4.11.jar:/Users/anand/Library/Caches/Coursier/v1/https/repo.lightbend.com/pass/vlG2VqY2fQeEZdpJcOrF28W4Si74DSgA59ZwLrMdiH6H2u13/commercial-releases/com/lightbend/cinnamon/cinnamon-core-java/2.13.3/cinnamon-core-java-2.13.3.jar:/Users/anand/Library/Caches/Coursier/v1/https/repo.lightbend.com/pass/vlG2VqY2fQeEZdpJcOrF28W4Si74DSgA59ZwLrMdiH6H2u13/commercial-releases/com/lightbend/cinnamon/cinnamon-prometheus-httpserver/2.13.3/cinnamon-prometheus-httpserver-2.13.3.jar:/Users/anand/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar:/Users/anand/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:/Users/anand/.sbt/boot/scala-2.12.10/org.scala-sbt/sbt/1.3.8/test-agent-1.3.8.jar:/Users/anand/.sbt/boot/scala-2.12.10/org.scala-sbt/sbt/1.3.8/test-interface-1.0.jar",
@@ -7,56 +7,56 @@
   "system-metrics" : {
     "heap-init" : 134217728,
     "heap-max" : 1908932608,
-    "heap-used" : 16202792,
-    "heap-committed" : 130023424,
+    "heap-used" : 26918016,
+    "heap-committed" : 104333312,
     "os-processors" : 4,
     "mem-pool-0" : {
       "name" : "Code Cache",
       "type" : "Non-heap memory",
       "init" : 2555904,
       "max" : 251658240,
-      "used" : 7906368,
-      "committed" : 7929856
+      "used" : 6371712,
+      "committed" : 6422528
     },
     "mem-pool-1" : {
       "name" : "Metaspace",
       "type" : "Non-heap memory",
       "init" : 0,
       "max" : -1,
-      "used" : 24268848,
-      "committed" : 25690112
+      "used" : 21878144,
+      "committed" : 23379968
     },
     "mem-pool-2" : {
       "name" : "Compressed Class Space",
       "type" : "Non-heap memory",
       "init" : 0,
       "max" : 1073741824,
-      "used" : 3234664,
-      "committed" : 3407872
+      "used" : 2872200,
+      "committed" : 3145728
     },
     "mem-pool-3" : {
       "name" : "PS Eden Space",
       "type" : "Heap memory",
       "init" : 34078720,
-      "max" : 703594496,
-      "used" : 5428696,
-      "committed" : 59244544
+      "max" : 705167360,
+      "used" : 19792368,
+      "committed" : 34078720
     },
     "mem-pool-4" : {
       "name" : "PS Survivor Space",
       "type" : "Heap memory",
       "init" : 5242880,
-      "max" : 3670016,
-      "used" : 3437936,
-      "committed" : 3670016
+      "max" : 5242880,
+      "used" : 0,
+      "committed" : 5242880
     },
     "mem-pool-5" : {
       "name" : "PS Old Gen",
       "type" : "Heap memory",
       "init" : 89653248,
       "max" : 1431830528,
-      "used" : 7336160,
-      "committed" : 67108864
+      "used" : 7261984,
+      "committed" : 65011712
     }
   },
   "configuration" : {
@@ -111,8 +111,9 @@
         "barista" : {
             "prepare-coffee-duration" : "100 milliseconds"
         },
+        "caffeine-limit" : 5,
         "guest" : {
-            "finish-coffee-duration" : "5 seconds"
+            "finish-coffee-duration" : "100 milliseconds"
         }
     },
     "excluded-sensitive-paths" : [
@@ -216,7 +217,7 @@
             }
         },
         "java" : {
-            "command" : "sbt.ForkMain 56331",
+            "command" : "sbt.ForkMain 53829",
             "launcher" : "SUN_STANDARD"
         },
         "jnu" : {
