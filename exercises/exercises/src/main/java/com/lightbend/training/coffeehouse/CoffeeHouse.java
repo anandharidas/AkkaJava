@@ -87,7 +87,12 @@ public class CoffeeHouse extends AbstractLoggingActor {
         return new OneForOneStrategy(true,
                 DeciderBuilder
                         .match(Guest.CaffeineException.class ,
-                                e -> (SupervisorStrategy.Directive) SupervisorStrategy.stop()).build().
+                                e -> (SupervisorStrategy.Directive) SupervisorStrategy.stop())
+                        .match(Waiter.FrustratedException.class,
+                                (Waiter.FrustratedException e) -> {
+                                barista.tell(new Barista.PrepareCoffee(e.coffee,e.guest),sender());
+                                return SupervisorStrategy.restart(); }
+                                ).build().
                                             orElse(super.supervisorStrategy().decider()));
     }
 

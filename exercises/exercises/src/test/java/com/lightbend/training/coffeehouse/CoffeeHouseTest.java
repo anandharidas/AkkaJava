@@ -1,12 +1,10 @@
 package com.lightbend.training.coffeehouse;
 
+import akka.actor.AbstractActor;
 import akka.actor.ActorRef;
 import akka.actor.Props;
 import akka.testkit.javadsl.TestKit;
 import org.junit.Test;
-
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class CoffeeHouseTest extends BaseAkkaTestCase {
 
@@ -104,6 +102,29 @@ public class CoffeeHouseTest extends BaseAkkaTestCase {
       expectTerminated(guest);
     }};
   }
+
+  @Test
+  public void shouldRestartWaiterAndResendPrepareCoffeeToBaristaOnFailure() {
+    new TestKit(system) {{
+      createActor(CoffeeHouse.class, "resend-prepare-coffee", () -> new CoffeeHouse(Integer.MAX_VALUE) {
+        @Override
+        protected ActorRef createBarista() {
+          return getRef();
+        }
+
+        @Override
+        protected ActorRef createWaiter() { //stubbing out the waiter actor to always throw exception
+          return context().actorOf(Props.create(AbstractActor.class, () -> new AbstractActor() {
+            @Override public Receive createReceive() {
+                    return receiveBuilder().matchAny(o -> {
+                      throw new Waiter.FrustratedException(new Coffee.Akkaccino(), system.deadLetters());
+                    }).build();
+          }}), "waiter");
+        }
+      });
+      ActorRef waiter = expectActor(this, "/user/resend-prepare-coffee/waiter");
+      waiter.tell("Blow up", ActorRef.noSender());
+      expectMsgEquals(new Barista.PrepareCoffee(new Coffee.Akkaccino(), system.deadLetters()));
+    }};
+  }
 }
-
-
