@@ -80,6 +80,18 @@ public class CoffeeHouseTest extends BaseAkkaTestCase {
       expectTerminated(guest);
     }};
   }
+
+  @Test
+  public void onTerminationOfGuestCoffeeHouseShouldRemoveGuestFromBookkeeper() {
+    new TestKit(system) {{
+      ActorRef coffeeHouse = system.actorOf(CoffeeHouse.props(1), "guest-removed");
+      coffeeHouse.tell(new CoffeeHouse.CreateGuest(new Coffee.Akkaccino()), ActorRef.noSender());
+      ActorRef guest = expectActor(this, "/user/guest-removed/$*");
+      interceptInfoLogMessage(".*[Tt]hanks.*", 1, () -> {
+        coffeeHouse.tell(new CoffeeHouse.ApproveCoffee(new Coffee.Akkaccino(), guest), ActorRef.noSender());
+      });
+    }};
+  }
 }
 
 

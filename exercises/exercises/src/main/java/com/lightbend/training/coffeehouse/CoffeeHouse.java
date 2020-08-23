@@ -3,6 +3,7 @@ package com.lightbend.training.coffeehouse;
 import akka.actor.AbstractLoggingActor;
 import akka.actor.ActorRef;
 import akka.actor.Props;
+import akka.actor.Terminated;
 import akka.japi.pf.ReceiveBuilder;
 import scala.App;
 import scala.concurrent.duration.FiniteDuration;
@@ -56,14 +57,18 @@ public class CoffeeHouse extends AbstractLoggingActor {
                         createGuest -> {
                                final ActorRef guest =  createGuest(createGuest.favoriteCoffee);
                                addToGuestBook(guest);
+                               context().watch(guest);
                 }).
-                match(ApproveCoffee.class, this::cofeeApproval, approveCoffee -> {
+                match(ApproveCoffee.class, this::cofeeApproval, approveCoffee ->
                     barista.forward(new Barista.PrepareCoffee
-                            (approveCoffee.coffee,approveCoffee.guest),context());
-                }).
+                            (approveCoffee.coffee,approveCoffee.guest),context())).
                 match(ApproveCoffee.class, approveCoffee -> {
                     log().info("Sorry {}, but you have reached your limit.",approveCoffee.guest);
                     context().stop(approveCoffee.guest);
+                }).
+                match(Terminated.class, terminated -> {
+                    log().info("Thanks {}, for being our guest!",terminated.actor());
+                    removeGuestFromGuestBook(terminated.actor());
                 }).
                 build();
     }
@@ -82,6 +87,11 @@ public class CoffeeHouse extends AbstractLoggingActor {
     private void addToGuestBook(ActorRef guest) {
         guestBook.put(guest,0);
         log().debug("Guest {} add to book", guest);
+    }
+
+    private void removeGuestFromGuestBook(ActorRef guest) {
+        guestBook.remove(guest);
+        log().debug("Removed guest {} from bookkeeper",guest);
     }
 
     protected ActorRef createGuest(Coffee coffee) {
