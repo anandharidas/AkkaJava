@@ -5,7 +5,6 @@ import akka.actor.ActorRef;
 import akka.actor.Props;
 import akka.actor.Terminated;
 import akka.japi.pf.ReceiveBuilder;
-import scala.App;
 import scala.concurrent.duration.FiniteDuration;
 
 import java.util.HashMap;
@@ -55,7 +54,8 @@ public class CoffeeHouse extends AbstractLoggingActor {
         return ReceiveBuilder.create().
                 match(CreateGuest.class,
                         createGuest -> {
-                               final ActorRef guest =  createGuest(createGuest.favoriteCoffee);
+                               final ActorRef guest =
+                                       createGuest(createGuest.favoriteCoffee,createGuest.guestCaffeineLimit);
                                addToGuestBook(guest);
                                context().watch(guest);
                 }).
@@ -94,31 +94,40 @@ public class CoffeeHouse extends AbstractLoggingActor {
         log().debug("Removed guest {} from bookkeeper",guest);
     }
 
-    protected ActorRef createGuest(Coffee coffee) {
-        return context().actorOf(Guest.props(waiter,coffee,coffeeFinishedDuration));
+    protected ActorRef createGuest(Coffee coffee,int guestCaffeineLimit) {
+        return context().actorOf(Guest.props(waiter,coffee,coffeeFinishedDuration,guestCaffeineLimit));
     }
 
     public static final class CreateGuest {
         public final Coffee favoriteCoffee;
-        protected CreateGuest(Coffee favoriteCoffee) {this.favoriteCoffee = favoriteCoffee ;}
+        public final int guestCaffeineLimit;
+        protected CreateGuest(Coffee favoriteCoffee,int guestCaffeineLimit)
+        {
+            checkNotNull(favoriteCoffee,"Favorite coffee cannot be null");
+            checkNotNull(guestCaffeineLimit, "CaffeineLimit cannot be null");
+            this.favoriteCoffee = favoriteCoffee ;
+            this.guestCaffeineLimit = guestCaffeineLimit;
+        }
 
         @Override
         public boolean equals(Object o) {
             if (this == o) return true;
             if (o == null || getClass() != o.getClass()) return false;
             CreateGuest that = (CreateGuest) o;
-            return Objects.equals(favoriteCoffee, that.favoriteCoffee);
+            return guestCaffeineLimit == that.guestCaffeineLimit &&
+                    Objects.equals(favoriteCoffee, that.favoriteCoffee);
         }
 
         @Override
         public int hashCode() {
-            return Objects.hash(favoriteCoffee);
+            return Objects.hash(favoriteCoffee, guestCaffeineLimit);
         }
 
         @Override
         public String toString() {
             return "CreateGuest{" +
                     "favoriteCoffee=" + favoriteCoffee +
+                    ", guestCaffeineLimit=" + guestCaffeineLimit +
                     '}';
         }
     }

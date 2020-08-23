@@ -21,6 +21,7 @@ public class BaristaTest extends BaseAkkaTestCase {
 
         return null;
       });
+
     }};
   }
 }

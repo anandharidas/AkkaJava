@@ -37,7 +37,7 @@ public class CoffeeHouseTest extends BaseAkkaTestCase {
   public void shouldCreateGuestActorsWhenCreateGuestMessageSent() {
     new TestKit(system) {{
       ActorRef coffeeHouse = system.actorOf(CoffeeHouse.props(Integer.MAX_VALUE), "create-guest");
-      coffeeHouse.tell(new CoffeeHouse.CreateGuest(new Coffee.Akkaccino()), ActorRef.noSender());
+      coffeeHouse.tell(new CoffeeHouse.CreateGuest(new Coffee.Akkaccino(), Integer.MAX_VALUE), ActorRef.noSender());
       expectActor(this, "/user/create-guest/$*");
     }};
   }
@@ -51,7 +51,7 @@ public class CoffeeHouseTest extends BaseAkkaTestCase {
           return getRef();
         }
       });
-      coffeeHouse.tell(new CoffeeHouse.CreateGuest(new Coffee.Akkaccino()), ActorRef.noSender());
+      coffeeHouse.tell(new CoffeeHouse.CreateGuest(new Coffee.Akkaccino(), Integer.MAX_VALUE), ActorRef.noSender());
       ActorRef guest = expectActor(this, "/user/prepare-coffee/$*");
       coffeeHouse.tell(new CoffeeHouse.ApproveCoffee(new Coffee.Akkaccino(), guest), getRef());
       expectMsgEquals(new Barista.PrepareCoffee(new Coffee.Akkaccino(), guest));
@@ -62,7 +62,7 @@ public class CoffeeHouseTest extends BaseAkkaTestCase {
   public void sendingApproveCoffeeShouldResultInLoggingStatusMessageWhenLimitReached() {
     new TestKit(system) {{
       ActorRef coffeeHouse = system.actorOf(CoffeeHouse.props(1), "caffeine-limit");
-      coffeeHouse.tell(new CoffeeHouse.CreateGuest(new Coffee.Akkaccino()), ActorRef.noSender());
+      coffeeHouse.tell(new CoffeeHouse.CreateGuest(new Coffee.Akkaccino(), Integer.MAX_VALUE), ActorRef.noSender());
       ActorRef guest = expectActor(this, "/user/caffeine-limit/$*");
       interceptInfoLogMessage(".*[Ss]orry.*", 1, () -> coffeeHouse.tell(
               new CoffeeHouse.ApproveCoffee(new Coffee.Akkaccino(), guest), ActorRef.noSender()));
@@ -73,7 +73,7 @@ public class CoffeeHouseTest extends BaseAkkaTestCase {
   public void sendingApproveCoffeeShouldResultInStoppingGuestWhenLimitReached() {
     new TestKit(system) {{
       ActorRef coffeeHouse = system.actorOf(CoffeeHouse.props(1), "guest-terminated");
-      coffeeHouse.tell(new CoffeeHouse.CreateGuest(new Coffee.Akkaccino()), ActorRef.noSender());
+      coffeeHouse.tell(new CoffeeHouse.CreateGuest(new Coffee.Akkaccino(), Integer.MAX_VALUE), ActorRef.noSender());
       ActorRef guest = expectActor(this, "/user/guest-terminated/$*");
       watch(guest);
       coffeeHouse.tell(new CoffeeHouse.ApproveCoffee(new Coffee.Akkaccino(), guest), ActorRef.noSender());
@@ -85,7 +85,7 @@ public class CoffeeHouseTest extends BaseAkkaTestCase {
   public void onTerminationOfGuestCoffeeHouseShouldRemoveGuestFromBookkeeper() {
     new TestKit(system) {{
       ActorRef coffeeHouse = system.actorOf(CoffeeHouse.props(1), "guest-removed");
-      coffeeHouse.tell(new CoffeeHouse.CreateGuest(new Coffee.Akkaccino()), ActorRef.noSender());
+      coffeeHouse.tell(new CoffeeHouse.CreateGuest(new Coffee.Akkaccino(), Integer.MAX_VALUE), ActorRef.noSender());
       ActorRef guest = expectActor(this, "/user/guest-removed/$*");
       interceptInfoLogMessage(".*[Tt]hanks.*", 1, () -> {
         coffeeHouse.tell(new CoffeeHouse.ApproveCoffee(new Coffee.Akkaccino(), guest), ActorRef.noSender());

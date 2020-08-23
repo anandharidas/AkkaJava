@@ -1,10 +1,8 @@
 package com.lightbend.training.coffeehouse;
 
 import akka.actor.ActorRef;
-import akka.actor.Props;
 import akka.testkit.javadsl.TestKit;
 import org.junit.Test;
-import scala.concurrent.duration.FiniteDuration;
 
 import java.time.Duration;
 
@@ -13,7 +11,7 @@ public class GuestTest extends BaseAkkaTestCase {
   @Test
   public void sendingCoffeeServedShouldIncreaseCoffeeCount() {
     new TestKit(system) {{
-      ActorRef guest = system.actorOf(Guest.props(system.deadLetters(), new Coffee.Akkaccino(), duration("100 milliseconds")));
+      ActorRef guest = system.actorOf(Guest.props(system.deadLetters(), new Coffee.Akkaccino(), duration("100 milliseconds"), Integer.MAX_VALUE));
       interceptInfoLogMessage(".*[Ee]njoy.*1\\.*", 1, () -> {
         guest.tell(new Waiter.CoffeeServed(new Coffee.Akkaccino()), ActorRef.noSender());
       });
@@ -44,8 +42,18 @@ public class GuestTest extends BaseAkkaTestCase {
     }};
   }
 
+  @Test
+  public void sendingCoffeeFinishedShouldInExceptionIfCaffeineLimitExceeded() {
+    new TestKit(system) {{
+      ActorRef guest = system.actorOf(Guest.props(system.deadLetters(), new Coffee.Akkaccino(), duration("100 millis"), -1));
+      eventFilter(Guest.CaffeineException.class, "", 1, () -> {
+        guest.tell(Guest.CoffeeFinished.Instance, ActorRef.noSender());
+      });
+    }};
+  }
+
   private ActorRef createGuest(TestKit kit, ActorRef waiter) {
-    ActorRef guest = system.actorOf(Guest.props(waiter, new Coffee.Akkaccino(), kit.duration("100 milliseconds")));
+    ActorRef guest = system.actorOf(Guest.props(waiter, new Coffee.Akkaccino(), kit.duration("100 milliseconds"), Integer.MAX_VALUE));
     kit.expectMsgEquals(new Waiter.ServeCoffee(new Coffee.Akkaccino())); // Creating Guest immediately sends Waiter.ServeCoffee
     return guest;
   }

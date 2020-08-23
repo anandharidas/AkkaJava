@@ -49,8 +49,8 @@ public class CoffeeHouseAppTest extends BaseAkkaTestCase {
           return getRef();
         }
       }.createGuest(2, new Coffee.Akkaccino(), Integer.MAX_VALUE);
-      expectMsgAllOf(new CoffeeHouse.CreateGuest(new Coffee.Akkaccino()),
-              new CoffeeHouse.CreateGuest(new Coffee.Akkaccino()));
+      expectMsgAllOf(new CoffeeHouse.CreateGuest(new Coffee.Akkaccino(), Integer.MAX_VALUE),
+              new CoffeeHouse.CreateGuest(new Coffee.Akkaccino(), Integer.MAX_VALUE));
     }};
 
   }

@@ -1,20 +1,23 @@
-lifecycle-monitoring
+faulty-guest
 
-# Exercise 10 > Lifecycle Monitoring
+# Exercise 11 > Faulty Guest
 
-Sometimes we need to perform certain tasks before stopping an actor. In this exercise, we will explore this idea by watching for the `Termination` message.
+In this exercise, we will explore resilience by managing a faulty actor.
 
-- Change `CoffeeHouse` to monitor each `Guest` as follows:
-    - When the `Guest` terminates, remove the `Guest` from caffeineLimit bookkeeping.
-    - Log "Thanks {guest}, for being our guest!" at `info`.
+- Change `Guest` as follows:
+    - Add a `caffeineLimit` parameter.
+    - Create new exception called `CaffeineException` by extending `IllegalStateException`.
+    - Upon receiving `CoffeeFinished` throw the `CaffeineException` if `coffeeCount` exceeds `caffeineLimit`.
+- Change `CoffeeHouse` as follows:
+    - So that a `Guest` can be created with a `caffeineLimit`.
+    - Log the `Guest` path name instead of just the `Guest`.
+- Change `CoffeeHouseApp` as follows:
+    - So that a `Guest` can be created with a `caffeineLimit`.
 - Use the `run` command to boot the `CoffeeHouseApp` and verify:
-    - `CoffeeHouse Open` is logged to `coffee-house.log`.
-    - Lifecycle debug messages are logged to `coffee-house.log`.
-    - Make sure the correct number of `Guest` creations were logged.
-    - Make sure the correct number of `Guest` actors were added to the guest book.
-    - Make sure the `Guest` actors caffeine count is incremented.
-    - Make sure the guests are enjoying their `yummy` coffee.
-    - Make sure your `Guest` actors are stopped as expected.
-    - Make sure your `Guest` actors were removed from the guest book.
+    - Create a `Guest` with an individual `caffeineLimit` less than the global one and watch its lifecycle.
+    - Make sure the `Guest` actor throws `CaffeineException`.
+    - Attention: 
+        - Enter g 2 or guest 2 to create a `Guest` with a `caffeineLimit` of 2.
+        - If you omit the limit, `Integer.MAX_VALUE` will be used by default.
 - Use the `test` command to verify the solution works as expected.
 - Use the `nextExercise` command to move to the next exercise.
