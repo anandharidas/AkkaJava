@@ -11,7 +11,7 @@ public class CoffeeHouseTest extends BaseAkkaTestCase {
   @Test
   public void shouldLogMessageWhenCreated() {
     new TestKit(system) {{
-      interceptDebugLogMessage(".*[Oo]pen.*", 1, () -> system.actorOf(CoffeeHouse.props(Integer.MAX_VALUE)));
+      interceptDebugLogMessage(".*[Oo]pen.*", 1, () -> system.actorOf(CoffeeHouse.props(Integer.MAX_VALUE), "coffee-house"));
     }};
   }
 

@@ -3,6 +3,7 @@ package com.lightbend.training.coffeehouse;
 import akka.actor.*;
 import akka.japi.pf.DeciderBuilder;
 import akka.japi.pf.ReceiveBuilder;
+import akka.routing.FromConfig;
 import scala.concurrent.duration.FiniteDuration;
 
 import java.util.HashMap;
@@ -44,7 +45,8 @@ public class CoffeeHouse extends AbstractLoggingActor {
     protected ActorRef createBarista() {
         log().warning("WARNING prepareCoffeeDuration {} and baristaAccuracy {}",
                 prepareCoffeeDuration,baristaAccuracy);
-        return getContext().actorOf(Barista.props(prepareCoffeeDuration,baristaAccuracy),
+        return getContext().actorOf(FromConfig.getInstance().props(
+                Barista.props(prepareCoffeeDuration,baristaAccuracy)),
                 "barista");
     }
 

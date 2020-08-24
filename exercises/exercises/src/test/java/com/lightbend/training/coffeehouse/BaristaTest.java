@@ -33,10 +33,8 @@ public class BaristaTest extends BaseAkkaTestCase {
     new TestKit(system) {{
       Integer accuracy = 50;
       Long runs = 1000L;
-
       ActorRef guest = system.deadLetters();
       ActorRef barista = system.actorOf(Barista.props(duration("0 milliseconds"), accuracy));
-
       List<Coffee> coffees = new ArrayList<>();
       for(int i = 0; i < runs; i++) {
         barista.tell(new Barista.PrepareCoffee(new Coffee.Akkaccino(), guest), getRef());
