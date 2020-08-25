@@ -1,8 +1,10 @@
 package com.lightbend.training.coffeehouse;
 
+import akka.actor.AbstractActorWithUnboundedStash;
 import akka.actor.AbstractLoggingActor;
 import akka.actor.ActorRef;
 import akka.actor.Props;
+import akka.japi.pf.ReceiveBuilder;
 import scala.concurrent.duration.FiniteDuration;
 
 import java.util.Objects;
@@ -10,7 +12,7 @@ import java.util.Random;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
-public class Barista extends AbstractLoggingActor {
+public class Barista extends AbstractActorWithUnboundedStash {
 
     private final FiniteDuration prepareCoffeeDuration;
 
@@ -31,11 +33,34 @@ public class Barista extends AbstractLoggingActor {
 
     @Override
     public Receive createReceive() {
-        return receiveBuilder().match(PrepareCoffee.class, prepareCoffee ->
-        {
-                Busy.busy(prepareCoffeeDuration);
-                sender().tell(new CoffeePrepared(pickCoffee(prepareCoffee.coffee),prepareCoffee.guest),self());
-        }).build();
+        return ready();
+    }
+
+    private Receive ready() {
+        return receiveBuilder()
+                .match(PrepareCoffee.class, prepareCoffee ->
+                {
+                        scheduleCoffeePrepared(prepareCoffee.coffee,prepareCoffee.guest);
+                        getContext().become(busy(sender()));
+                })
+                .matchAny(this::unhandled)
+                .build();
+    }
+
+    private Receive busy(ActorRef waiter) {
+        return receiveBuilder()
+                .match(CoffeePrepared.class, coffeePrepared -> {
+                    waiter.tell(coffeePrepared,self());
+                    getContext().become(ready());
+                    unstashAll();
+                })
+                .matchAny( msg -> stash())
+                .build();
+    }
+
+    private void scheduleCoffeePrepared(Coffee coffee, ActorRef guest) {
+        context().system().scheduler().scheduleOnce(prepareCoffeeDuration,self(),
+                new CoffeePrepared(pickCoffee(coffee),guest),context().dispatcher(),self());
     }
 
     public static final class PrepareCoffee {

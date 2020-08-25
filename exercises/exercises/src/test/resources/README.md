@@ -1,12 +1,12 @@
-implement-router
+modify-behavior
 
-# Exercise 16 > Implement Router
+# Exercise 18 > Modify Behavior
 
-In this exercise, we will introduce parallelism through the use of routers.
+In this exercise, we will demonstrate through the use of `become` and `stash` to modify actor
 
-- Get rid of the bottleneck by using a router for the `Barista`.
-- Use an externally configured `round-robin` pool router.
-- Run the `run` command to boot the `CoffeeHouseApp` with different router configuration options; watch the throughput.
+- Re-implement the `Barista` actors behavior as a finite state machine:
+    - Do not use `Busy.busy` anymore.
+    - Use `become`, `stash` and the `scheduler`.
 - Use the `run` command to boot the `CoffeeHouseApp` and verify everything works as expected.
 - Use the `test` command to verify the solution works as expected.
 - Use the `nextExercise` command to move to the next exercise.
