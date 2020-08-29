@@ -17,7 +17,7 @@ public class BaristaTest extends BaseAkkaTestCase {
 
       ActorRef barista = system.actorOf(Barista.props(duration("100 milliseconds"), 100));
 
-      within(Duration.ofMillis(50), Duration.ofMillis(1000), () -> {
+      within(Duration.ofMillis(10), Duration.ofMillis(1000), () -> {
         barista.tell(new Barista.PrepareCoffee(new Coffee.Akkaccino(), system.deadLetters()),getRef());
 
         expectMsgEquals(new Barista.CoffeePrepared(new Coffee.Akkaccino(), system.deadLetters()));

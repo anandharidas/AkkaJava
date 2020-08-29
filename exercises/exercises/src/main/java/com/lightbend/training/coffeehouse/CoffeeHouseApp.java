@@ -10,6 +10,7 @@ import akka.actor.Props;
 import akka.event.Logging;
 import akka.event.LoggingAdapter;
 import akka.japi.pf.ReceiveBuilder;
+import akka.util.Timeout;
 import scala.concurrent.Await;
 import scala.concurrent.duration.Duration;
 
@@ -24,6 +25,9 @@ import java.util.concurrent.TimeoutException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import static akka.pattern.PatternsCS.ask;
+import static java.util.concurrent.TimeUnit.MILLISECONDS;
+
 public class CoffeeHouseApp implements Terminal{
 
     public static final Pattern optPattern = Pattern.compile("(\\S+)=(\\S+)");
@@ -32,11 +36,14 @@ public class CoffeeHouseApp implements Terminal{
 
     private final LoggingAdapter log;
 
+    private final Timeout statusTimeout;
+
     @SuppressWarnings("unused")
     private final ActorRef coffeeHouse;
 
-    public CoffeeHouseApp(final ActorSystem system){
+    public CoffeeHouseApp(final ActorSystem system,Timeout statusTimeout){
         this.system = system;
+        this.statusTimeout = statusTimeout;
         log = Logging.getLogger(system, getClass().getName());
         coffeeHouse = createCoffeeHouse();
     }
@@ -67,7 +74,11 @@ public class CoffeeHouseApp implements Terminal{
         final String name = opts.getOrDefault("name", "coffee-house");
 
         final ActorSystem system = ActorSystem.create(String.format("%s-system", name));
-        final CoffeeHouseApp coffeeHouseApp = new CoffeeHouseApp(system);
+        final Timeout statusTimeout = new Timeout(Duration.create(
+                system.settings().config().getDuration("coffee-house.status-timeout",MILLISECONDS),MILLISECONDS));
+
+        final CoffeeHouseApp coffeeHouseApp = new CoffeeHouseApp(system,statusTimeout);
+
         coffeeHouseApp.run();
     }
 
@@ -133,5 +144,15 @@ public class CoffeeHouseApp implements Terminal{
     }
 
     protected void getStatus(){
+        ask(coffeeHouse,CoffeeHouse.GetStatus.Instance,statusTimeout).
+                    thenApply(CoffeeHouse.Status.class::cast).
+                    whenComplete( (( status, failure) -> {
+                        if (failure == null) {
+                            log.info("Status: guest count = {}",status.guestCount);
+                        } else {
+                            log.error("Can't get status");
+                        }
+                    }));
+
     }
 }

@@ -21,6 +21,7 @@ public class GuestTest extends BaseAkkaTestCase {
   @Test
   public void serveCoffeeShouldBeSentAfterFinishCoffeeDuration() {
     new TestKit(system) {{
+
       ActorRef guest = createGuest(this, getRef());
 
       within(Duration.ofMillis(50), Duration.ofMillis(200), () -> {

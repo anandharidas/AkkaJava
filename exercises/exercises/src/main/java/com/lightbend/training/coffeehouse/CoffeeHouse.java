@@ -80,6 +80,9 @@ public class CoffeeHouse extends AbstractLoggingActor {
                     log().info("Thanks {}, for being our guest!",terminated.actor());
                     removeGuestFromGuestBook(terminated.actor());
                 }).
+                match(GetStatus.class, getStatus -> {
+                   sender().tell(new Status(getContext().children().size() - 2),self());
+                }).
                 build();
     }
 
@@ -187,6 +190,42 @@ public class CoffeeHouse extends AbstractLoggingActor {
             return "ApproveCoffee{" +
                     "coffee=" + coffee +
                     ", guest=" + guest +
+                    '}';
+        }
+
+    }
+
+
+
+    public static final class GetStatus {
+        public static final GetStatus Instance = new GetStatus();
+    }
+
+    public static final class Status {
+
+        public  final int guestCount;
+
+        public Status(final int guestCount) {
+            this.guestCount = guestCount;
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+            Status status = (Status) o;
+            return guestCount == status.guestCount;
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(guestCount);
+        }
+
+        @Override
+        public String toString() {
+            return "Status{" +
+                    "guestCount=" + guestCount +
                     '}';
         }
     }

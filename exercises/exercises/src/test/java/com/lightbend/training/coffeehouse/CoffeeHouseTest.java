@@ -127,4 +127,13 @@ public class CoffeeHouseTest extends BaseAkkaTestCase {
       expectMsgEquals(new Barista.PrepareCoffee(new Coffee.Akkaccino(), system.deadLetters()));
     }};
   }
+
+  @Test
+  public void sendingGetStatusShouldResultInStatusResponse() {
+    new TestKit(system) {{
+      ActorRef coffeeHouse = system.actorOf(CoffeeHouse.props(1), "coffee-house");
+      coffeeHouse.tell(CoffeeHouse.GetStatus.Instance, getRef());
+      expectMsgEquals(new CoffeeHouse.Status(0));
+    }};
+  }
 }
